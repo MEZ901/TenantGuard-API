@@ -1,12 +1,11 @@
 import fastify from "fastify";
 import { logger } from "./logger";
+import { applciationsRoutes } from "../modules/applications/applications.routes";
 
 export async function buildServer() {
   const app = fastify({ logger });
 
-  // register plugins
-
-  // register routes
+  app.register(applciationsRoutes, { prefix: "/api/applications" });
 
   return app;
 }
